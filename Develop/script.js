@@ -25,10 +25,37 @@ function generatePassword() {
   // lowercase, uppercase, numeric, and/or special characters
   var pwTypes = prompt("Which character types should the password have?", "lowercase,uppercase,numeric,special");
   confirm("Your password will have " + pwTypes + " character type(s).");
+  var pwTypesArray = pwTypes.split(",");
 
-  var capChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  // Character options
   var lowerChars = "abcdefghijklmnopqrstuvwxyz";
+  var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numChars = "0123456789";
+  var specialChars = "!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+  var passwordChars = "";
+  var password = [];
+  var index;
+  
+  // Adds character types depending on user input
+  if (pwTypesArray.includes("lowercase")) {
+    passwordChars = passwordChars.concat(lowerChars);
+  }
+  if (pwTypesArray.includes("uppercase")) {
+    passwordChars = passwordChars.concat(upperChars);
+  }
+  if (pwTypesArray.includes("lowercase")) {
+    passwordChars = passwordChars.concat(numChars);
+  }
+  if (pwTypesArray.includes("lowercase")) {
+    passwordChars = passwordChars.concat(specialChars);
+  }
 
+  for (i = 0; i < pwLength; i++) {
+    // Generate random number from zero to passwordChars length
+    index = Math.floor(Math.random() * passwordChars.length);
+    // Add character at index to password array
+    password.push(passwordChars.charAt(index));
+  }
 
-  return "PaSsWoRd";
+  return password.join("");
 }
