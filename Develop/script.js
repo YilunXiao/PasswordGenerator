@@ -17,5 +17,18 @@ generateBtn.addEventListener("click", writePassword);
 
 // Generates new password
 function generatePassword() {
+  // Prompt for password length
+  var pwLength = prompt("How many characters should the password have?", "8");
+  confirm("Your password will be " + pwLength + " characters long.");
+
+  // Prompt for character types to include
+  // lowercase, uppercase, numeric, and/or special characters
+  var pwTypes = prompt("Which character types should the password have?", "lowercase,uppercase,numeric,special");
+  confirm("Your password will have " + pwTypes + " character type(s).");
+
+  var capChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lowerChars = "abcdefghijklmnopqrstuvwxyz";
+
+
   return "PaSsWoRd";
 }
