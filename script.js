@@ -14,7 +14,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// Variables to hold possible characters
+// Strings to hold possible characters of each type
 var lowerChars = "abcdefghijklmnopqrstuvwxyz";
 var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numChars = "0123456789";
@@ -40,11 +40,11 @@ function generatePassword() {
   var pwTypes = prompt("Which character types should the password have?", "lowercase, uppercase, numeric, special");
   
   // Variables used to generate password
-  var passwordChars = "";
-  var password = [];
-  var index = 0;
+  var passwordChars = ""; // Possible characgters in password
+  var password = []; // Final password returned
+  var index = 0; // Index for selecting characters
   
-  // Adds character types depending on user input
+  // Adds character types depending on user input to list of possible characters
   if (pwTypes.includes("lowercase")) {
     passwordChars += lowerChars;
   }
