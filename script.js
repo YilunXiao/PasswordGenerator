@@ -14,48 +14,67 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+// Variables to hold possible characters
+var lowerChars = "abcdefghijklmnopqrstuvwxyz";
+var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numChars = "0123456789";
+var specialChars = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
 // Generates new password
 function generatePassword() {
   // Prompt for password length
   var pwLength = prompt("How many characters should the password have?", "8");
-  confirm("Your password will be " + pwLength + " characters long.");
+  
+  // Check for correct length, otherwise end process
+  if (pwLength < 8 || pwLength > 128) {
+    alert("Your password must be 8 and 128 characters long.");
+    return "";
+  }
+
+  // Confirm password length
+  alert("Your password will be " + pwLength + " characters long.");
+
 
   // Prompt for character types to include
   // lowercase, uppercase, numeric, and/or special characters
   var pwTypes = prompt("Which character types should the password have?", "lowercase, uppercase, numeric, special");
-  confirm("Your password will have " + pwTypes + " character type(s).");
-
-  // Character options
-  var lowerChars = "abcdefghijklmnopqrstuvwxyz";
-  var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var numChars = "0123456789";
-  var specialChars = "!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+  
+  // Variables used to generate password
   var passwordChars = "";
   var password = [];
-  var index;
+  var index = 0;
   
   // Adds character types depending on user input
   if (pwTypes.includes("lowercase")) {
-    passwordChars = passwordChars.concat(lowerChars);
+    passwordChars += lowerChars;
   }
   if (pwTypes.includes("uppercase")) {
-    passwordChars = passwordChars.concat(upperChars);
+    passwordChars += upperChars;
   }
   if (pwTypes.includes("numeric")) {
-    passwordChars = passwordChars.concat(numChars);
+    passwordChars += numChars;
   }
   if (pwTypes.includes("special")) {
-    passwordChars = passwordChars.concat(specialChars);
+    passwordChars += specialChars;
   }
 
+  // Check at least one character type was chosen
+  if (passwordChars.length === 0) {
+    alert("You must include at least one character type.");
+    return "";
+  }
 
+  // Confirm that password will contain specified types
+  alert("Your password will have " + pwTypes + " character type(s).");
+
+  // Generate password using a string of characters and a numeric length
   for (i = 0; i < pwLength; i++) {
-    // Generate random number from zero to passwordChars length
+    // Generate random number from zero to passwordChars length -1
     index = Math.floor(Math.random() * passwordChars.length);
-    // Add character at index to password array
+    // Add character at index to end of password
     password.push(passwordChars.charAt(index));
   }
 
+  // Returns string formed by combining the password array
   return password.join("");
 }
