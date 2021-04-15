@@ -25,7 +25,6 @@ function generatePassword() {
   // lowercase, uppercase, numeric, and/or special characters
   var pwTypes = prompt("Which character types should the password have?", "lowercase, uppercase, numeric, special");
   confirm("Your password will have " + pwTypes + " character type(s).");
-  // var pwTypesArray = pwTypes.split(",");
 
   // Character options
   var lowerChars = "abcdefghijklmnopqrstuvwxyz";
@@ -36,7 +35,6 @@ function generatePassword() {
   var password = [];
   var index;
   
-
   // Adds character types depending on user input
   if (pwTypes.includes("lowercase")) {
     passwordChars = passwordChars.concat(lowerChars);
